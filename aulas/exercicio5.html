@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercício 5</title>
+</head>
+
+<body>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <div id="exercicio5">
+        <!-- 1) Use o v-if e o v-show para alternar a visibilidade dos parágrafos Inspecione o html para ver a diferença -->
+        <div>
+            <button @click="if(a<3){a++;}else{a=0}">Muda de parágrafo</button>
+            {{a}}
+            <p v-if="a==0">preto ...</p>
+            <p v-if="a==1">...branco</p>
+            <p v-if="a==2">navegação ...</p>
+            <p v-if="a==3">...hamburguer</p>
+        </div>
+        <!-- 2) Liste um "array" de elementos e o seu indice. -->
+        <ul>
+            <li>{{array}}</li>
+        </ul>
+        <!-- 3)Liste um objeto e o seu indice. object: {title: 'Lord of the Rings', author: 'J.R.R. Tolkiens', books: '3'}. -->
+        <ul>
+            <li>{{object}}</li>
+        </ul>
+        <!-- 4) Liste um array dentro de um objeto: {name: 'TESTE', data: [1.67, 1.33, 0.98, 2.21]} -->
+        <ul>
+            <li>
+                {{dados.data}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: '#exercicio5',
+            data: {
+                a:0,
+                array: ['Luis', 'Ana', 'Pedro', 'João'],
+                object: {
+                    title: 'Lord of the Rings',
+                    author: 'J.R.R. Tolkiens',
+                    books: '3'
+                },
+                dados: {
+                    name: 'TESTE',
+                    id: 10,
+                    data: [1.67, 1.33, 0.98, 2.21]
+                },
+                methods:{
+                    
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

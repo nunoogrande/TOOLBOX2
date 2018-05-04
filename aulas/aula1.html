@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{nome+" "+idade}}</h1>
+        <input type="text" v-on:input="alteraNome" placeholder="insira o seu nome">
+        <input type="text" v-on:input="alteraIdade" placeholder="insira a sua idade">
+        <h1>idade * 3: {{idade*3}}</h1>
+        <h1>{{n}}</h1>
+        <img :src="src" alt="" style="width:100px;height:100px;">
+        <br>
+        <input type="text" v-on:input="alterasrc" placeholder="insira o url">
+
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                nome: "pedro",
+                idade: "",
+                n:Math.floor(Math.random() * 11),
+                src:""
+            },
+            methods:{
+                alteraNome: function(){
+                    this.nome=event.target.value
+                },
+                alteraIdade: function(){
+                    this.idade=event.target.value
+                },
+                alterasrc: function(){
+                    this.src=event.target.value
+                }
+            }
+        })
+    </script>
+</body>
+</html>

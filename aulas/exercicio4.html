@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercício 4</title>
+</head>
+
+<body>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <div id="exercicio4">
+        <!-- 1) Inicia o efeito com o botão, alternando entre as classes "destaque" e "encolher" de acordo com um intervalo de tempo (obs:...) -->
+        <div>
+            <button @click="iniciarEfeito">Magia...</button>
+            <div id="magia" :class="[magic ? 'destaque' : 'encolher']"></div>
+        </div>
+        <!-- 2) Cria algumas classes de CSS e adiciona-as com a sintaxe de array -->
+        <div>Não tenho classe nenhuma :(</div>
+        <!-- 3) Associa uma classe digitada pelo utilizador -->
+        <div>
+            <input type="text" v-on:input="classes" placeholder="insira uma class">
+            <div id="magia" :class="classs"></div>
+        </div>
+        <!-- 4) Associa uma classe digitada pelo utilizador e uma outra mediante um valor booleano (true / false) -->
+        <div>
+            <input type="text">
+            <input type="text">
+            <div></div>
+        </div>
+        <!-- 5) Repita o exercicio 3) mas agora com estilos em vez de classes.  -->
+        <div>
+            <input type="text" v-on:input="estilho" value="width: px">
+            <div id="magia" :style="est"></div>
+        </div>
+        <!-- 6) Inicialize uma barra de progresso, usando o botão, com estilos próprios e incrementada por setInterval and style bindings. -->
+        <div>
+            <button v-on:click="clickMe">Inicia Barra de Progresso</button>
+            <div id="bar">
+                <div class="color" :style="counter"></div>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#exercicio4',
+            data: {
+                magic: true,
+                classs: "",
+                est: "",
+                n: 0,
+                counter: "",
+            },
+            methods: {
+                iniciarEfeito: function() {
+                    this.magic=!this.magic;
+                },
+                classes: function(){
+                    this.classs=event.target.value;
+                },
+                estilho: function(){
+                    this.est=event.target.value;
+                },
+                clickMe(){
+                    if(this.n<100){
+                    this.n+=1;
+                    this.counter="width:"+this.n+"% !important;"
+                    }else{
+                        this.n=0;
+                    }
+                }
+            }
+        });
+    </script>
+    <style>
+        #magia {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+        
+        #bar{
+            width: 400px;
+            height: 50px;
+            border: 1px solid black;
+        }
+
+        .destaque {
+            background-color: red;
+            width: 200px !important;
+        }
+        
+        .encolher {
+            background-color: gray;
+            width: 50px !important;
+        }
+
+        .color{
+            background-color: red;
+            height: 50px;
+            width: 0%;
+        }
+    </style>
+</body>
+
+</html>

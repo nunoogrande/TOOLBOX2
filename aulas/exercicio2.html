@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercício 2</title>
+</head>
+
+<body>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <div id="exercicio2">
+        <!-- 1) Exibir um alerta quando o botão for pressionado -->
+        <div>
+            <button v-on:click="alert">Alerta!!!</button>
+        </div>
+        <!-- 2) Quando uma tecla for pressiona guardar o seu valor numa variável (obs: usar event.target.value para obter valor) -->
+        <div>
+            <input type="text" v-on:input="change">
+            <p>{{ valor }}</p>
+        </div>
+        <!-- Ajustar o exercício anterior para guardar o valor apenas quando pressionado "enter" -->
+        <div>
+            <input type="text" v-on:keypress.enter="changeOnEnter">
+            <p>{{ valor }}</p>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#exercicio2',
+            data: {
+                valor: ''
+            },
+            methods:{
+                change:function(){
+                    this.valor=event.target.value;
+                },
+                changeOnEnter(){
+                    this.valor=event.target.value;
+                },
+                alert(){
+                    alert("alert");
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

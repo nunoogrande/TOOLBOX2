@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercício 3</title>
+</head>
+
+<body>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <div id="exercicio3">
+        <h1>J O G O</h1>
+        <h3>Adivinha o número</h3>
+        <!-- 1) Exibir um alerta enquanto não atingir o valor 37 e informar quando adivinhar (ou ultrapassar) -->
+        <div>
+            <p>valor atual: {{ valor }}</p>
+            <button @click="valor += 5" v-on:click="pista">Soma 5</button>
+            <button @click="valor += 1" v-on:click="pista">Soma 1</button>
+            <p>{{ resultado }}</p>
+        </div>
+        <!-- 2) Analiza o valor introduzido e faz reset ao input após 5 segundos (obs: setTimeout(..., 5000) -->
+        <div>
+            <input type="text" v-on:keypress.enter="check">
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#exercicio3',
+            data: {
+                valor: 0,
+                resultado: ""
+            },
+            methods: {
+                check: function(){
+                    if(event.target.value==37){
+                        alert("acerto");
+                    }
+                    if(event.target.value>37){
+                        alert("ultrapassou");
+                    }
+                    if(event.target.value<37){
+                        alert("abaixo");
+                    }
+                    event.target.value='';
+                },
+                pista: function(){
+                    if(this.valor<37){
+                        this.resultado="abaixo";
+                    }
+                    if(this.valor==37){
+                        this.resultado="acertou";
+                    }
+                    if(this.valor>37){
+                        this.resultado="ultrapassou";
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
