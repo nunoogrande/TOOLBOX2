@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Carrinho de Compras
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let artigo of artigosCarrinho">
+      <h2>{{artigo.produto}}</h2>
+      <p>{{artigo.valor}}€</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
